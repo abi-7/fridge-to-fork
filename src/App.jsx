@@ -96,8 +96,11 @@ Only respond with valid JSON, no additional text or markdown formatting.`;
         );
       }
 
+      console.log("Full API Response:", data);
+
       const data = await response.json();
-      const content = data.candidates[0].content.parts[0].text;
+      const text =
+        data?.candidates?.[0]?.content?.parts?.[0]?.text || "No recipe found";
       const cleanedContent = content.replace(/```json\n?|\n?```/g, "").trim();
       const parsed = JSON.parse(cleanedContent);
       setRecipes(parsed.recipes);
