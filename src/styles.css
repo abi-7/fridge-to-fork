@@ -1,0 +1,450 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: #1a1612;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input::placeholder {
+  color: #9db3ce;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #d4e5ff 0%, #c9deff 50%, #d4e5ff 100%);
+  color: #4a6fa8;
+  position: relative;
+  overflow: hidden;
+}
+
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.logoIcon {
+  font-size: 48px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.title {
+  font-family: "Fraunces", serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #1e3a5f;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.1rem;
+  color: #475569;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.inputSection {
+  margin-bottom: 60px;
+}
+
+.card {
+  background: linear-gradient(
+    145deg,
+    rgba(200, 220, 250, 0.7) 0%,
+    rgba(190, 210, 245, 0.75) 100%
+  );
+  border-radius: 24px;
+  padding: 40px;
+  border: 1px solid rgba(107, 163, 240, 0.2);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cardTitle {
+  font-family: "Fraunces", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #4a6fa8;
+}
+
+.inputRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.input {
+  flex: 1;
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-family: "DM Sans", sans-serif;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(107, 163, 240, 0.3);
+  border-radius: 12px;
+  color: #4a6fa8;
+  transition: all 0.3s ease;
+}
+
+.addButton {
+  padding: 16px 28px;
+  font-size: 1rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  background: linear-gradient(135deg, #89b9f5 0%, #6fa3f0 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ingredientTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.3s ease;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(143, 179, 226, 0.15);
+  border: 1px solid rgba(143, 179, 226, 0.3);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #5b8dd4;
+  font-weight: 500;
+}
+
+.tagRemove {
+  background: none;
+  border: none;
+  color: #7fa3c9;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.servingsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+}
+
+.servingsLabel {
+  font-size: 1rem;
+  color: #4a6fa8;
+  font-weight: 500;
+}
+
+.servingsControl {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.servingsButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(143, 179, 226, 0.4);
+  background: transparent;
+  color: #4a6fa8;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.servingsValue {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4a6fa8;
+  min-width: 30px;
+  text-align: center;
+}
+
+.generateButton {
+  width: 100%;
+  padding: 18px 32px;
+  font-size: 1.1rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  background: linear-gradient(135deg, #89b9f5 0%, #6fa3f0 100%);
+  border: none;
+  border-radius: 14px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(111, 163, 240, 0.25);
+}
+
+.generateButtonDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.loadingText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  font-size: 1.2rem;
+}
+
+.error {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(180, 80, 80, 0.2);
+  border: 1px solid rgba(180, 80, 80, 0.3);
+  border-radius: 10px;
+  color: #e8a0a0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.resultsSection {
+  animation: fadeIn 0.5s ease;
+}
+
+.resultsTitle {
+  font-family: "Fraunces", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #1e3a5f;
+}
+
+.recipeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.recipeCard {
+  background: linear-gradient(
+    145deg,
+    rgba(210, 230, 255, 0.8) 0%,
+    rgba(200, 220, 250, 0.85) 100%
+  );
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid rgba(107, 163, 240, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.5s ease;
+}
+
+.recipeNumber {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #89b9f5 0%, #6fa3f0 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.recipeName {
+  font-family: "Fraunces", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #4a6fa8;
+  padding-right: 20px;
+}
+
+.recipeDescription {
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.recipeTime {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(143, 179, 226, 0.15);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #334155;
+  margin-bottom: 20px;
+}
+
+.timeIcon {
+  font-size: 1rem;
+}
+
+.additionalSection {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+}
+
+.additionalTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.additionalList {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.instructionsSection {
+  border-top: 1px solid rgba(107, 163, 240, 0.2);
+  padding-top: 20px;
+}
+
+.instructionsTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.instructionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+}
+
+.instructionStep {
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: #334155;
+  line-height: 1.6;
+  counter-increment: step;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: #7fa3c9;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
+}
+
+.footer a {
+  color: #7fa3c9;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding: 10px;
+}
+
+.footer a:hover {
+  color: #4a90e2;
+}
