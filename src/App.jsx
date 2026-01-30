@@ -1,8 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import "./styles.css";
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-
 export default function App() {
   const [ingredients, setIngredients] = useState([]);
   const [currentIngredient, setCurrentIngredient] = useState("");
@@ -70,23 +68,20 @@ Only respond with valid JSON, no additional text or markdown formatting.`;
 
     try {
       // Switched to Gemini 2.5 Flash Lite as it has higher RPM (10)
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${API_KEY}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: {
-              temperature: 0.7,
-              topP: 0.95,
-              topK: 40,
-            },
-          }),
+      const response = await fetch(`/.netlify/functions/gemini-proxy`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.7,
+            topP: 0.95,
+            topK: 40,
+          },
+        }),
+      });
 
       if (response.status === 429) {
         throw new Error(
