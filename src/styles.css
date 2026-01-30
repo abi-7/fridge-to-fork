@@ -448,3 +448,38 @@ button:focus {
 .footer a:hover {
   color: #4a90e2;
 }
+
+/*  triggers when the screen is smaller than 480px */
+@media (max-width: 480px) {
+  .inputRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .addButton {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .servingsRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .servingsControl {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .servingsLabel {
+    margin-right: 24px;
+  }
+}
